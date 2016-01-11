@@ -2,6 +2,28 @@
 title: "glinski_dehydration"
 output: html_document
 ---
+tested hypotheses
+============
+list
+
+things to do
+============
+list
+
+general configuration
+=====================
+Install and load supporting libraries.
+```{r eval=TRUE, echo=FALSE}
+print(Sys.info()[4])
+
+R.Version()$version.string
+library(rmarkdown, quietly = TRUE, warn.conflicts = FALSE)
+library(dplyr, quietly = TRUE, warn.conflicts = FALSE)
+library(knitr, quietly = TRUE, warn.conflicts = FALSE)
+print("list of loaded packages: ")
+print((.packages()))
+```
+
 
 This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
 
