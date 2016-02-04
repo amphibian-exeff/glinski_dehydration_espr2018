@@ -24,19 +24,29 @@ print("list of loaded packages: ")
 print((.packages()))
 ```
 
+import experimental exposure and microsomal data
+=================================
+Load csv files with experimental data and microsome data sets. The beolw may return false but still be OK if rstudio does not have privileges to data directory (e.g., attached drive).
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+```{r eval=TRUE, echo=FALSE}
+if(Sys.info()[4]=="DONNA-PC"){
+  micro.root <- path.expand("C:/Users/Donna/Documents/Github/glinski_metabolites/")
+}
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+if(Sys.info()[4]=="stp-air-3.local" || Sys.info()[4]=="stp-air.local" || Sys.info()[4]=="stp-air"){
+  micro.root <- path.expand("~/git/glinski_metabolites/")
+}
 
-```{r}
-summary(cars)
+if(Sys.info()[4]=="DZ2626UTPURUCKE"){
+  micro.root <- "k:/git/glinski_metabolites/"
+}
+print(paste("Root directory location: ", micro.root, sep=""))
+
+micro.csv.in <- paste(micro.root, "csv_in/", sep="")
+micro.csv.out <- paste(micro.root, "csv_out/", sep="")
+micro.graphics <- paste(micro.root, "graphics/", sep="")
+micro.tables <- paste(micro.root, "tables/", sep="")
+
+#maybe ok even if remote drive returns false
+print(paste("check to see if R can access files OK: ", file.exists(micro.csv.in), sep = ""))
 ```
-
-You can also embed plots, for example:
-
-```{r, echo=FALSE}
-plot(cars)
-```
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
