@@ -34,7 +34,7 @@ if(Sys.info()[4]=="DONNA-PC"){
 }
 
 if(Sys.info()[4]=="stp-air-3.local" || Sys.info()[4]=="stp-air.local" || Sys.info()[4]=="stp-air"){
-  dehyd.root <- path.expand("~/git/glinski_metabolites/")
+  dehyd.root <- path.expand("~/git/glinski_dehydration/")
 }
 
 if(Sys.info()[4]=="DZ2626UTPURUCKE"){
@@ -50,6 +50,6 @@ dehyd.tables <- paste(dehyd.root, "tables/", sep="")
 #maybe ok even if remote drive returns false
 print(paste("check to see if R can access files OK: ", file.exists(dehyd.csv.in), sep = ""))
 
-dehyd <- read.table(paste(dehyd.csv.in,"exposure_experiment.csv",sep=""), header = TRUE, sep = ",")
-
+dehyd <- read.table(paste(dehyd.csv.in,"dehydration.csv",sep=""), header = TRUE, sep = ",")
+str(dehyd)
 ```
