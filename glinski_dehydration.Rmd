@@ -24,29 +24,32 @@ print("list of loaded packages: ")
 print((.packages()))
 ```
 
-import experimental exposure and microsomal data
+import experimental exposure and dehydsomal data
 =================================
-Load csv files with experimental data and microsome data sets. The beolw may return false but still be OK if rstudio does not have privileges to data directory (e.g., attached drive).
+Load csv files with experimental data and dehydsome data sets. The beolw may return false but still be OK if rstudio does not have privileges to data directory (e.g., attached drive).
 
 ```{r eval=TRUE, echo=FALSE}
 if(Sys.info()[4]=="DONNA-PC"){
-  micro.root <- path.expand("C:/Users/Donna/Documents/Github/glinski_metabolites/")
+  dehyd.root <- path.expand("C:/Users/Donna/Documents/Github/glinski_metabolites/")
 }
 
 if(Sys.info()[4]=="stp-air-3.local" || Sys.info()[4]=="stp-air.local" || Sys.info()[4]=="stp-air"){
-  micro.root <- path.expand("~/git/glinski_metabolites/")
+  dehyd.root <- path.expand("~/git/glinski_metabolites/")
 }
 
 if(Sys.info()[4]=="DZ2626UTPURUCKE"){
-  micro.root <- "k:/git/glinski_metabolites/"
+  dehyd.root <- "k:/git/glinski_metabolites/"
 }
-print(paste("Root directory location: ", micro.root, sep=""))
+print(paste("Root directory location: ", dehyd.root, sep=""))
 
-micro.csv.in <- paste(micro.root, "csv_in/", sep="")
-micro.csv.out <- paste(micro.root, "csv_out/", sep="")
-micro.graphics <- paste(micro.root, "graphics/", sep="")
-micro.tables <- paste(micro.root, "tables/", sep="")
+dehyd.csv.in <- paste(dehyd.root, "csv_in/", sep="")
+dehyd.csv.out <- paste(dehyd.root, "csv_out/", sep="")
+dehyd.graphics <- paste(dehyd.root, "graphics/", sep="")
+dehyd.tables <- paste(dehyd.root, "tables/", sep="")
 
 #maybe ok even if remote drive returns false
-print(paste("check to see if R can access files OK: ", file.exists(micro.csv.in), sep = ""))
+print(paste("check to see if R can access files OK: ", file.exists(dehyd.csv.in), sep = ""))
+
+dehyd <- read.table(paste(dehyd.csv.in,"exposure_experiment.csv",sep=""), header = TRUE, sep = ",")
+
 ```
