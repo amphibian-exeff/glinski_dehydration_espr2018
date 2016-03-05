@@ -60,8 +60,15 @@ Check out structure of imported data sets.
 
 ```{r data_structure, eval=TRUE, echo=TRUE}
 str(dehyd)
+unique(dehyd$parent)
 unique(dehyd$analyte)
 unique(dehyd$matrix)
 unique(dehyd$species)
 #View(dehyd)
+
+dehyd.amphib <- dehyd[which(dehyd$matrix=="amphib"),]
+dehyd.soil <- dehyd[which(dehyd$matrix=="soil"),]
+
+dehyd.amphib.atrazine <- dehyd.amphib[which(dehyd.amphib$parent=="atrazine"),]
 ```
+
