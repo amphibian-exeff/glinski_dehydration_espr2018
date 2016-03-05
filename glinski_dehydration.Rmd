@@ -24,9 +24,9 @@ print("list of loaded packages: ")
 print((.packages()))
 ```
 
-import experimental exposure and dehydsomal data
+import experimental exposure and dehydration data
 =================================
-Load csv files with experimental data and dehydsome data sets. The beolw may return false but still be OK if rstudio does not have privileges to data directory (e.g., attached drive).
+Load csv file with experimental dehydration data. The below may return false but still be OK if rstudio does not have privileges to data directory (e.g., attached drive).
 
 ```{r eval=TRUE, echo=FALSE}
 if(Sys.info()[4]=="DONNA-PC"){
@@ -50,6 +50,18 @@ dehyd.tables <- paste(dehyd.root, "tables/", sep="")
 #maybe ok even if remote drive returns false
 print(paste("check to see if R can access files OK: ", file.exists(dehyd.csv.in), sep = ""))
 
+#original excel file has some amphibi as matrix instead aof amphib
 dehyd <- read.table(paste(dehyd.csv.in,"dehydration.csv",sep=""), header = TRUE, sep = ",")
+```
+
+dehydration exposure data structure
+====================================
+Check out structure of imported data sets. 
+
+```{r data_structure, eval=TRUE, echo=TRUE}
 str(dehyd)
+unique(dehyd$analyte)
+unique(dehyd$matrix)
+unique(dehyd$species)
+#View(dehyd)
 ```

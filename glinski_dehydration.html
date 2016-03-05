@@ -82,11 +82,34 @@ img {
 <pre><code>##  [1] &quot;knitr&quot;     &quot;dplyr&quot;     &quot;rmarkdown&quot; &quot;stats&quot;     &quot;graphics&quot; 
 ##  [6] &quot;grDevices&quot; &quot;utils&quot;     &quot;datasets&quot;  &quot;methods&quot;   &quot;base&quot;</code></pre>
 </div>
-<div id="import-experimental-exposure-and-dehydsomal-data" class="section level1">
-<h1>import experimental exposure and dehydsomal data</h1>
-<p>Load csv files with experimental data and dehydsome data sets. The beolw may return false but still be OK if rstudio does not have privileges to data directory (e.g., attached drive).</p>
-<pre><code>## [1] &quot;Root directory location: /Users/puruckertom/git/glinski_metabolites/&quot;</code></pre>
+<div id="import-experimental-exposure-and-dehydration-data" class="section level1">
+<h1>import experimental exposure and dehydration data</h1>
+<p>Load csv file with experimental dehydration data. The below may return false but still be OK if rstudio does not have privileges to data directory (e.g., attached drive).</p>
+<pre><code>## [1] &quot;Root directory location: /Users/puruckertom/git/glinski_dehydration/&quot;</code></pre>
 <pre><code>## [1] &quot;check to see if R can access files OK: TRUE&quot;</code></pre>
+</div>
+<div id="dehydration-exposure-data-structure" class="section level1">
+<h1>dehydration exposure data structure</h1>
+<p>Check out structure of imported data sets.</p>
+<pre class="r"><code>str(dehyd)</code></pre>
+<pre><code>## 'data.frame':    1494 obs. of  6 variables:
+##  $ time   : int  0 0 0 0 0 0 2 2 2 2 ...
+##  $ parent : Factor w/ 5 levels &quot;atrazine&quot;,&quot;chloro&quot;,..: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ analyte: Factor w/ 12 levels &quot;atrazine&quot;,&quot;chloro&quot;,..: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ matrix : Factor w/ 2 levels &quot;amphib&quot;,&quot;soil&quot;: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ species: Factor w/ 2 levels &quot;BA&quot;,&quot;LF&quot;: 2 2 2 2 2 2 2 2 2 2 ...
+##  $ conc   : num  2.58 1.69 12.52 2.97 8.05 ...</code></pre>
+<pre class="r"><code>unique(dehyd$analyte)</code></pre>
+<pre><code>##  [1] atrazine  dia       dea       chloromet chloro    metol     mesa     
+##  [8] moxa      tdn       tdla      tdlb      imid     
+## 12 Levels: atrazine chloro chloromet dea dia imid mesa metol moxa ... tdn</code></pre>
+<pre class="r"><code>unique(dehyd$matrix)</code></pre>
+<pre><code>## [1] amphib soil  
+## Levels: amphib soil</code></pre>
+<pre class="r"><code>unique(dehyd$species)</code></pre>
+<pre><code>## [1] LF BA
+## Levels: BA LF</code></pre>
+<pre class="r"><code>#View(dehyd)</code></pre>
 </div>
 
 
