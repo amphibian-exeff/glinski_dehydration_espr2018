@@ -92,4 +92,71 @@ dehyd.amphib.tdn.tdn <- dehyd.amphib.tdn[which(dehyd.amphib.tdn$analyte=="tdn"),
 dehyd.amphib.tdn.tdla <- dehyd.amphib.tdn[which(dehyd.amphib.tdn$analyte=="tdla"),]
 dehyd.amphib.tdn.tdlb <- dehyd.amphib.tdn[which(dehyd.amphib.tdn$analyte=="tdlb"),]
 ```
-
+atrazine. time is significant with a negative slope, opposite what we expected
+```{r atrazine_plot, eval=TRUE, echo=TRUE}
+str(dehyd.amphib.atrazine.atrazine)
+time <- dehyd.amphib.atrazine.atrazine$time
+conc <- dehyd.amphib.atrazine.atrazine$conc
+species <- dehyd.amphib.atrazine.atrazine$species
+plot(time, conc)
+atrazine.lm <- lm(conc ~ time + species)
+summary(atrazine.lm)
+```
+chlorothalonil. no concs in data set
+```{r chlorothalonil_plot, eval=TRUE, echo=TRUE}
+#View(dehyd.amphib.chloro.chloro)
+str(dehyd.amphib.chloro.chloro)
+time <- dehyd.amphib.chloro.chloro$time
+conc <- dehyd.amphib.chloro.chloro$conc
+species <- dehyd.amphib.chloro.chloro$species
+#plot(time, conc)
+#chloro.lm <- lm(conc ~ time + species)
+#summary(chloro.lm)
+```
+imidacloprod. 
+```{r imidacloprid_plot, eval=TRUE, echo=TRUE}
+#View(dehyd.amphib.imid.imid)
+str(dehyd.amphib.imid.imid)
+time <- dehyd.amphib.imid.imid$time
+conc <- dehyd.amphib.imid.imid$conc
+species <- dehyd.amphib.imid.imid$species
+plot(time, conc)
+#only one species
+imid.lm <- lm(conc ~ time) # + species
+summary(imid.lm)
+```
+metolachlor. 
+```{r metolachlor_plot, eval=TRUE, echo=TRUE}
+#View(dehyd.amphib.imid.imid)
+str(dehyd.amphib.metol.metol)
+time <- dehyd.amphib.metol.metol$time
+conc <- dehyd.amphib.metol.metol$conc
+species <- dehyd.amphib.metol.metol$species
+plot(time, conc)
+#only one species
+metol.lm <- lm(conc ~ time + species) # + species
+summary(metol.lm)
+```
+triadimefon. 
+```{r triadimefon_plot, eval=TRUE, echo=TRUE}
+#View(dehyd.amphib.imid.imid)
+str(dehyd.amphib.tdn.tdn)
+time <- dehyd.amphib.tdn.tdn$time
+conc <- dehyd.amphib.tdn.tdn$conc
+species <- dehyd.amphib.tdn.tdn$species
+plot(time, conc)
+#only one species
+tdn.lm <- lm(conc ~ time + species)
+summary(tdn.lm)
+```
+test everything together except chlorothalonil
+```{r big_test, eval=TRUE, echo=TRUE}
+big_test <- rbind(dehyd.amphib.atrazine.atrazine, dehyd.amphib.imid.imid, dehyd.amphib.metol.metol, dehyd.amphib.tdn.tdn)
+time <- big_test$time
+conc <- big_test$conc
+species <- big_test$species
+pesticides <- big_test$analyte
+plot(time, conc)
+big_test.lm <- lm(conc ~ time + species + pesticides)
+summary(big_test.lm)
+```
