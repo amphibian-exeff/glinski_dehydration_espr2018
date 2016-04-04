@@ -30,7 +30,7 @@ Load csv file with experimental dehydration data. The below may return false but
 
 ```{r eval=TRUE, echo=FALSE}
 if(Sys.info()[4]=="DONNA-PC"){
-  dehyd.root <- path.expand("C:/Users/Donna/Documents/Github/glinski_metabolites/")
+  dehyd.root <- path.expand("C:/Users/Donna/Documents/Github/glinski_dehydration/")
 }
 
 if(Sys.info()[4]=="stp-air-3.local" || Sys.info()[4]=="stp-air.local" || Sys.info()[4]=="stp-air"){
@@ -38,7 +38,7 @@ if(Sys.info()[4]=="stp-air-3.local" || Sys.info()[4]=="stp-air.local" || Sys.inf
 }
 
 if(Sys.info()[4]=="DZ2626UTPURUCKE"){
-  dehyd.root <- "k:/git/glinski_metabolites/"
+  dehyd.root <- "k:/git/glinski_dehydration/"
 }
 print(paste("Root directory location: ", dehyd.root, sep=""))
 
@@ -94,6 +94,7 @@ dehyd.amphib.tdn.tdlb <- dehyd.amphib.tdn[which(dehyd.amphib.tdn$analyte=="tdlb"
 ```
 atrazine. time is significant with a negative slope, opposite what we expected
 ```{r atrazine_plot, eval=TRUE, echo=TRUE}
+print("atrazine")
 str(dehyd.amphib.atrazine.atrazine)
 time <- dehyd.amphib.atrazine.atrazine$time
 conc <- dehyd.amphib.atrazine.atrazine$conc
@@ -104,6 +105,7 @@ summary(atrazine.lm)
 ```
 chlorothalonil. no concs in data set
 ```{r chlorothalonil_plot, eval=TRUE, echo=TRUE}
+print("chlorothalonil")
 #View(dehyd.amphib.chloro.chloro)
 str(dehyd.amphib.chloro.chloro)
 time <- dehyd.amphib.chloro.chloro$time
@@ -115,6 +117,7 @@ species <- dehyd.amphib.chloro.chloro$species
 ```
 imidacloprod. 
 ```{r imidacloprid_plot, eval=TRUE, echo=TRUE}
+print("imidacloprid")
 #View(dehyd.amphib.imid.imid)
 str(dehyd.amphib.imid.imid)
 time <- dehyd.amphib.imid.imid$time
@@ -127,6 +130,7 @@ summary(imid.lm)
 ```
 metolachlor. 
 ```{r metolachlor_plot, eval=TRUE, echo=TRUE}
+print("metolachlor")
 #View(dehyd.amphib.imid.imid)
 str(dehyd.amphib.metol.metol)
 time <- dehyd.amphib.metol.metol$time
@@ -139,6 +143,7 @@ summary(metol.lm)
 ```
 triadimefon. 
 ```{r triadimefon_plot, eval=TRUE, echo=TRUE}
+print("triadimefon")
 #View(dehyd.amphib.imid.imid)
 str(dehyd.amphib.tdn.tdn)
 time <- dehyd.amphib.tdn.tdn$time
