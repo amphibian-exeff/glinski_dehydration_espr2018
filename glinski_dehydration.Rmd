@@ -51,7 +51,7 @@ dehyd.tables <- paste(dehyd.root, "tables/", sep="")
 print(paste("check to see if R can access files OK: ", file.exists(dehyd.csv.in), sep = ""))
 
 #original excel file has some amphibi as matrix instead aof amphib
-dehyd <- read.table(paste(dehyd.csv.in,"dehydration.csv",sep=""), header = TRUE, sep = ",")
+dehyd <- read.table(paste(dehyd.csv.in,"dehydration2.csv",sep=""), header = TRUE, sep = ",")
 ```
 
 dehydration exposure data structure
@@ -92,6 +92,7 @@ dehyd.amphib.tdn.tdn <- dehyd.amphib.tdn[which(dehyd.amphib.tdn$analyte=="tdn"),
 dehyd.amphib.tdn.tdla <- dehyd.amphib.tdn[which(dehyd.amphib.tdn$analyte=="tdla"),]
 dehyd.amphib.tdn.tdlb <- dehyd.amphib.tdn[which(dehyd.amphib.tdn$analyte=="tdlb"),]
 ```
+
 atrazine. time is significant with a negative slope, opposite what we expected
 ```{r atrazine_plot, eval=TRUE, echo=TRUE}
 print("atrazine")
