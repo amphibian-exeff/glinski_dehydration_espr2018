@@ -71,9 +71,27 @@ dehyd.soil <- dehyd[which(dehyd$matrix=="soil"),]
 
 #atrazine
 dehyd.amphib.atrazine <- dehyd.amphib[which(dehyd.amphib$parent=="atrazine"),]
+View(dehyd.amphib.atrazine)
 dehyd.amphib.atrazine.atrazine <-   dehyd.amphib.atrazine[which(dehyd.amphib.atrazine$analyte=="atrazine"),]
 dehyd.amphib.atrazine.dea <-   dehyd.amphib.atrazine[which(dehyd.amphib.atrazine$analyte=="dea"),]
 dehyd.amphib.atrazine.dia <-   dehyd.amphib.atrazine[which(dehyd.amphib.atrazine$analyte=="dia"),]
+str(dehyd.amphib.atrazine)
+dim(dehyd.amphib.atrazine.atrazine)
+#create atrazine plus metabolites dataframe
+dehyd.amphib.atrazine.atrazineD <- dehyd.amphib.atrazine.atrazine
+conc <- aggregate(dehyd.amphib.atrazine$conc, by=list(Category=dehyd.amphib.atrazine$ID), FUN=sum)
+dim(conc)
+colnames(conc) <- c("ID","conc2")
+#View(conc)
+#View(cbind(dehyd.amphib.atrazine.atrazineD, conc))
+colnames(dehyd.amphib.atrazine.atrazineD)
+colnames(conc)
+dehyd.amphib.atrazine.atrazineD <- merge(dehyd.amphib.atrazine.atrazineD, conc)
+dehyd.amphib.atrazine.atrazineD$analyte <- "atrazineD"
+dehyd.amphib.atrazine.atrazineD$conc <- dehyd.amphib.atrazine.atrazineD$conc2
+dehyd.amphib.atrazine.atrazineD <- subset(dehyd.amphib.atrazine.atrazineD, select=-c(conc2))
+#View(dehyd.amphib.atrazine.atrazineD)
+
 #chlorothalonil
 dehyd.amphib.chloro <- dehyd.amphib[which(dehyd.amphib$parent=="chloro"),]
 dehyd.amphib.chloro.chloro <- dehyd.amphib.chloro[which(dehyd.amphib.chloro$analyte=="chloro"),]
