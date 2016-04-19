@@ -121,7 +121,7 @@ dehyd.amphib.metol <- dehyd.amphib[which(dehyd.amphib$parent=="metol"),]
 dehyd.amphib.metol.metol <- dehyd.amphib.metol[which(dehyd.amphib.metol$analyte=="metol"),]
 dehyd.amphib.metol.mesa <- dehyd.amphib.metol[which(dehyd.amphib.metol$analyte=="mesa"),]
 dehyd.amphib.metol.moxa <- dehyd.amphib.metol[which(dehyd.amphib.metol$analyte=="moxa"),]
-#create atrazine plus metabolites dataframe
+#create metol plus metabolites dataframe
 dehyd.amphib.metol.metolD <- dehyd.amphib.metol.metol
 conc <- aggregate(dehyd.amphib.metol$conc, by=list(Category=dehyd.amphib.metol$ID), FUN=sum)
 dim(conc)
@@ -141,22 +141,23 @@ dehyd.amphib.tdn <- dehyd.amphib[which(dehyd.amphib$parent=="tdn"),]
 dehyd.amphib.tdn.tdn <- dehyd.amphib.tdn[which(dehyd.amphib.tdn$analyte=="tdn"),]
 dehyd.amphib.tdn.tdla <- dehyd.amphib.tdn[which(dehyd.amphib.tdn$analyte=="tdla"),]
 dehyd.amphib.tdn.tdlb <- dehyd.amphib.tdn[which(dehyd.amphib.tdn$analyte=="tdlb"),]
-#create atrazine plus metabolites dataframe
-dehyd.amphib.atrazine.atrazineD <- dehyd.amphib.atrazine.atrazine
-conc <- aggregate(dehyd.amphib.atrazine$conc, by=list(Category=dehyd.amphib.atrazine$ID), FUN=sum)
+#create tdn plus metabolites dataframe
+dehyd.amphib.tdn.tdnD <- dehyd.amphib.tdn.tdn
+conc <- aggregate(dehyd.amphib.tdn$conc, by=list(Category=dehyd.amphib.tdn$ID), FUN=sum)
 dim(conc)
 colnames(conc) <- c("ID","conc2")
 #View(conc)
-#View(cbind(dehyd.amphib.atrazine.atrazineD, conc))
-colnames(dehyd.amphib.atrazine.atrazineD)
+#View(cbind(dehyd.amphib.tdn.tdnD, conc))
+colnames(dehyd.amphib.tdn.tdnD)
 colnames(conc)
-dehyd.amphib.atrazine.atrazineD <- merge(dehyd.amphib.atrazine.atrazineD, conc)
-dehyd.amphib.atrazine.atrazineD$analyte <- "atrazineD"
-dehyd.amphib.atrazine.atrazineD$conc <- dehyd.amphib.atrazine.atrazineD$conc2
-dehyd.amphib.atrazine.atrazineD <- subset(dehyd.amphib.atrazine.atrazineD, select=-c(conc2))
-#View(dehyd.amphib.atrazine.atrazineD)
+dehyd.amphib.tdn.tdnD <- merge(dehyd.amphib.tdn.tdnD, conc)
+dehyd.amphib.tdn.tdnD$analyte <- "tdnD"
+dehyd.amphib.tdn.tdnD$conc <- dehyd.amphib.tdn.tdnD$conc2
+dehyd.amphib.tdn.tdnD <- subset(dehyd.amphib.tdn.tdnD, select=-c(conc2))
+#View(dehyd.amphib.tdn.tdnD)
 ```
 
+Significance testing.
 atrazine. time is significant with a negative slope, opposite what we expected
 ```{r atrazine_plot, eval=TRUE, echo=TRUE}
 print("atrazine")
@@ -168,6 +169,19 @@ plot(time, conc)
 atrazine.lm <- lm(conc ~ time + species)
 summary(atrazine.lm)
 ```
+
+atrazine+D. time is significant with a negative slope, opposite what we expected
+```{r atrazineD_plot, eval=TRUE, echo=TRUE}
+print("atrazineD")
+str(dehyd.amphib.atrazine.atrazineD)
+time <- dehyd.amphib.atrazine.atrazineD$time
+conc <- dehyd.amphib.atrazine.atrazineD$conc
+species <- dehyd.amphib.atrazine.atrazineD$species
+plot(time, conc)
+atrazineD.lm <- lm(conc ~ time + species)
+summary(atrazineD.lm)
+```
+
 chlorothalonil. no concs in data set
 ```{r chlorothalonil_plot, eval=TRUE, echo=TRUE}
 print("chlorothalonil")
@@ -180,6 +194,7 @@ species <- dehyd.amphib.chloro.chloro$species
 #chloro.lm <- lm(conc ~ time + species)
 #summary(chloro.lm)
 ```
+
 imidacloprod. 
 ```{r imidacloprid_plot, eval=TRUE, echo=TRUE}
 print("imidacloprid")
@@ -193,6 +208,7 @@ plot(time, conc)
 imid.lm <- lm(conc ~ time) # + species
 summary(imid.lm)
 ```
+
 metolachlor. 
 ```{r metolachlor_plot, eval=TRUE, echo=TRUE}
 print("metolachlor")
@@ -206,6 +222,21 @@ plot(time, conc)
 metol.lm <- lm(conc ~ time + species) # + species
 summary(metol.lm)
 ```
+
+metolachlorD. 
+```{r metolachlorD_plot, eval=TRUE, echo=TRUE}
+print("metolachlorD")
+#View(dehyd.amphib.imid.imid)
+str(dehyd.amphib.metol.metolD)
+time <- dehyd.amphib.metol.metolD$time
+conc <- dehyd.amphib.metol.metolD$conc
+species <- dehyd.amphib.metol.metolD$species
+plot(time, conc)
+#only one species
+metolD.lm <- lm(conc ~ time + species) # + species
+summary(metolD.lm)
+```
+
 triadimefon. 
 ```{r triadimefon_plot, eval=TRUE, echo=TRUE}
 print("triadimefon")
@@ -219,7 +250,22 @@ plot(time, conc)
 tdn.lm <- lm(conc ~ time + species)
 summary(tdn.lm)
 ```
-test everything together except chlorothalonil
+
+triadimefonD. 
+```{r triadimefonD_plot, eval=TRUE, echo=TRUE}
+print("triadimefonD")
+#View(dehyd.amphib.imid.imid)
+str(dehyd.amphib.tdn.tdnD)
+time <- dehyd.amphib.tdn.tdnD$time
+conc <- dehyd.amphib.tdn.tdnD$conc
+species <- dehyd.amphib.tdn.tdnD$species
+plot(time, conc)
+#only one species
+tdnD.lm <- lm(conc ~ time + species)
+summary(tdnD.lm)
+```
+
+test everything together except chlorothalonil, but not summing metabolites
 ```{r big_test, eval=TRUE, echo=TRUE}
 big_test <- rbind(dehyd.amphib.atrazine.atrazine, dehyd.amphib.imid.imid, dehyd.amphib.metol.metol, dehyd.amphib.tdn.tdn)
 time <- big_test$time
@@ -229,4 +275,16 @@ pesticides <- big_test$analyte
 plot(time, conc)
 big_test.lm <- lm(conc ~ time + species + pesticides)
 summary(big_test.lm)
+```
+
+test everything together except chlorothalonil, this time summing metabolites
+```{r big_test, eval=TRUE, echo=TRUE}
+big_test <- rbind(dehyd.amphib.atrazine.atrazineD, dehyd.amphib.imid.imid, dehyd.amphib.metol.metolD, dehyd.amphib.tdn.tdnD)
+time <- big_test$time
+conc <- big_test$conc
+species <- big_test$species
+pesticides <- big_test$analyte
+plot(time, conc)
+big_testD.lm <- lm(conc ~ time + species + pesticides)
+summary(big_testD.lm)
 ```
