@@ -182,17 +182,17 @@ atrazineD.lm <- lm(conc ~ time + species)
 summary(atrazineD.lm)
 ```
 
-chlorothalonil. no concs in data set
+chlorothalonil. no concs in data set, use chloromet isntead
 ```{r chlorothalonil_plot, eval=TRUE, echo=TRUE}
-print("chlorothalonil")
+print("chlorothalonil-met")
 #View(dehyd.amphib.chloro.chloro)
-str(dehyd.amphib.chloro.chloro)
-time <- dehyd.amphib.chloro.chloro$time
-conc <- dehyd.amphib.chloro.chloro$conc
-species <- dehyd.amphib.chloro.chloro$species
-#plot(time, conc)
-#chloro.lm <- lm(conc ~ time + species)
-#summary(chloro.lm)
+str(dehyd.amphib.chloro.chloromet)
+time <- dehyd.amphib.chloro.chloromet$time
+conc <- dehyd.amphib.chloro.chloromet$conc
+species <- dehyd.amphib.chloro.chloromet$species
+plot(time, conc)
+chloromet.lm <- lm(conc ~ time + species)
+summary(chloromet.lm)
 ```
 
 imidacloprod. 
@@ -277,9 +277,9 @@ big_test.lm <- lm(conc ~ time + species + pesticides)
 summary(big_test.lm)
 ```
 
-test everything together except chlorothalonil, this time summing metabolites
-```{r big_test, eval=TRUE, echo=TRUE}
-big_test <- rbind(dehyd.amphib.atrazine.atrazineD, dehyd.amphib.imid.imid, dehyd.amphib.metol.metolD, dehyd.amphib.tdn.tdnD)
+test everything together, chloromet instead of chlorothalonil, this time summing metabolites
+```{r big_testD, eval=TRUE, echo=TRUE}
+big_test <- rbind(dehyd.amphib.atrazine.atrazineD, dehyd.amphib.imid.imid, dehyd.amphib.metol.metolD, dehyd.amphib.tdn.tdnD, dehyd.amphib.chloro.chloromet)
 time <- big_test$time
 conc <- big_test$conc
 species <- big_test$species
