@@ -96,19 +96,65 @@ dehyd.amphib.atrazine.atrazineD <- subset(dehyd.amphib.atrazine.atrazineD, selec
 dehyd.amphib.chloro <- dehyd.amphib[which(dehyd.amphib$parent=="chloro"),]
 dehyd.amphib.chloro.chloro <- dehyd.amphib.chloro[which(dehyd.amphib.chloro$analyte=="chloro"),]
 dehyd.amphib.chloro.chloromet <- dehyd.amphib.chloro[which(dehyd.amphib.chloro$analyte=="chloromet"),]
+##chlorothalonil data NA
+##create chloro plus metabolites dataframe
+#dehyd.amphib.chloro.chloroD <- dehyd.amphib.chloro.chloro
+#conc <- aggregate(dehyd.amphib.chloro$conc, by=list(Category=dehyd.amphib.chloro$ID), FUN=sum)
+#dim(conc)
+#colnames(conc) <- c("ID","conc2")
+##View(conc)
+##View(cbind(dehyd.amphib.chloro.chloroD, conc))
+#colnames(dehyd.amphib.chloro.chloroD)
+#colnames(conc)
+#dehyd.amphib.chloro.chloroD <- merge(dehyd.amphib.chloro.chloroD, conc)
+#dehyd.amphib.chloro.chloroD$analyte <- "chloroD"
+#dehyd.amphib.chloro.chloroD$conc <- dehyd.amphib.chloro.chloroD$conc2
+#dehyd.amphib.chloro.chloroD <- subset(dehyd.amphib.chloro.chloroD, select=-c(conc2))
+##View(dehyd.amphib.chloro.chloroD)
+
 #imidacloprid
 dehyd.amphib.imid <- dehyd.amphib[which(dehyd.amphib$parent=="imid"),]
 dehyd.amphib.imid.imid <- dehyd.amphib.imid[which(dehyd.amphib.imid$analyte=="imid"),]
+
 #metolachlor
 dehyd.amphib.metol <- dehyd.amphib[which(dehyd.amphib$parent=="metol"),]
 dehyd.amphib.metol.metol <- dehyd.amphib.metol[which(dehyd.amphib.metol$analyte=="metol"),]
 dehyd.amphib.metol.mesa <- dehyd.amphib.metol[which(dehyd.amphib.metol$analyte=="mesa"),]
 dehyd.amphib.metol.moxa <- dehyd.amphib.metol[which(dehyd.amphib.metol$analyte=="moxa"),]
+#create atrazine plus metabolites dataframe
+dehyd.amphib.metol.metolD <- dehyd.amphib.metol.metol
+conc <- aggregate(dehyd.amphib.metol$conc, by=list(Category=dehyd.amphib.metol$ID), FUN=sum)
+dim(conc)
+colnames(conc) <- c("ID","conc2")
+#View(conc)
+#View(cbind(dehyd.amphib.metol.metolD, conc))
+colnames(dehyd.amphib.metol.metolD)
+colnames(conc)
+dehyd.amphib.metol.metolD <- merge(dehyd.amphib.metol.metolD, conc)
+dehyd.amphib.metol.metolD$analyte <- "metolD"
+dehyd.amphib.metol.metolD$conc <- dehyd.amphib.metol.metolD$conc2
+dehyd.amphib.metol.metolD <- subset(dehyd.amphib.metol.metolD, select=-c(conc2))
+#View(dehyd.amphib.atrazine.atrazineD)
+
 #tridimefon
 dehyd.amphib.tdn <- dehyd.amphib[which(dehyd.amphib$parent=="tdn"),]
 dehyd.amphib.tdn.tdn <- dehyd.amphib.tdn[which(dehyd.amphib.tdn$analyte=="tdn"),]
 dehyd.amphib.tdn.tdla <- dehyd.amphib.tdn[which(dehyd.amphib.tdn$analyte=="tdla"),]
 dehyd.amphib.tdn.tdlb <- dehyd.amphib.tdn[which(dehyd.amphib.tdn$analyte=="tdlb"),]
+#create atrazine plus metabolites dataframe
+dehyd.amphib.atrazine.atrazineD <- dehyd.amphib.atrazine.atrazine
+conc <- aggregate(dehyd.amphib.atrazine$conc, by=list(Category=dehyd.amphib.atrazine$ID), FUN=sum)
+dim(conc)
+colnames(conc) <- c("ID","conc2")
+#View(conc)
+#View(cbind(dehyd.amphib.atrazine.atrazineD, conc))
+colnames(dehyd.amphib.atrazine.atrazineD)
+colnames(conc)
+dehyd.amphib.atrazine.atrazineD <- merge(dehyd.amphib.atrazine.atrazineD, conc)
+dehyd.amphib.atrazine.atrazineD$analyte <- "atrazineD"
+dehyd.amphib.atrazine.atrazineD$conc <- dehyd.amphib.atrazine.atrazineD$conc2
+dehyd.amphib.atrazine.atrazineD <- subset(dehyd.amphib.atrazine.atrazineD, select=-c(conc2))
+#View(dehyd.amphib.atrazine.atrazineD)
 ```
 
 atrazine. time is significant with a negative slope, opposite what we expected
