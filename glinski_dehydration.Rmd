@@ -71,7 +71,7 @@ dehyd.soil <- dehyd[which(dehyd$matrix=="soil"),]
 
 #atrazine
 dehyd.amphib.atrazine <- dehyd.amphib[which(dehyd.amphib$parent=="atrazine"),]
-View(dehyd.amphib.atrazine)
+#View(dehyd.amphib.atrazine)
 dehyd.amphib.atrazine.atrazine <-   dehyd.amphib.atrazine[which(dehyd.amphib.atrazine$analyte=="atrazine"),]
 dehyd.amphib.atrazine.dea <-   dehyd.amphib.atrazine[which(dehyd.amphib.atrazine$analyte=="dea"),]
 dehyd.amphib.atrazine.dia <-   dehyd.amphib.atrazine[which(dehyd.amphib.atrazine$analyte=="dia"),]
@@ -165,7 +165,9 @@ str(dehyd.amphib.atrazine.atrazine)
 time <- dehyd.amphib.atrazine.atrazine$time
 conc <- dehyd.amphib.atrazine.atrazine$conc
 species <- dehyd.amphib.atrazine.atrazine$species
-plot(time, conc)
+#plot(time, conc)
+boxplot(conc ~ time, main = "Atrazine", xlab = "Dehydration Time (hrs)", 
+        ylab="Concentration", col="lightblue")
 atrazine.lm <- lm(conc ~ time + species)
 summary(atrazine.lm)
 ```
@@ -178,6 +180,8 @@ time <- dehyd.amphib.atrazine.atrazineD$time
 conc <- dehyd.amphib.atrazine.atrazineD$conc
 species <- dehyd.amphib.atrazine.atrazineD$species
 plot(time, conc)
+boxplot(conc ~ time, main = "Atrazine+D", xlab = "Dehydration Time (hrs)", 
+        ylab="Concentration", col="lightblue")
 atrazineD.lm <- lm(conc ~ time + species)
 summary(atrazineD.lm)
 ```
@@ -191,6 +195,8 @@ time <- dehyd.amphib.chloro.chloromet$time
 conc <- dehyd.amphib.chloro.chloromet$conc
 species <- dehyd.amphib.chloro.chloromet$species
 plot(time, conc)
+boxplot(conc ~ time, main = "Chlorothalonil Metabolite", xlab = "Dehydration Time (hrs)", 
+        ylab="Concentration", col="lightblue")
 chloromet.lm <- lm(conc ~ time + species)
 summary(chloromet.lm)
 ```
@@ -204,6 +210,8 @@ time <- dehyd.amphib.imid.imid$time
 conc <- dehyd.amphib.imid.imid$conc
 species <- dehyd.amphib.imid.imid$species
 plot(time, conc)
+boxplot(conc ~ time, main = "Imidacloprid", xlab = "Dehydration Time (hrs)", 
+        ylab="Concentration", col="lightblue")
 #only one species
 imid.lm <- lm(conc ~ time) # + species
 summary(imid.lm)
@@ -218,6 +226,8 @@ time <- dehyd.amphib.metol.metol$time
 conc <- dehyd.amphib.metol.metol$conc
 species <- dehyd.amphib.metol.metol$species
 plot(time, conc)
+boxplot(conc ~ time, main = "Metolachlor", xlab = "Dehydration Time (hrs)", 
+        ylab="Concentration", col="lightblue")
 #only one species
 metol.lm <- lm(conc ~ time + species) # + species
 summary(metol.lm)
@@ -232,6 +242,8 @@ time <- dehyd.amphib.metol.metolD$time
 conc <- dehyd.amphib.metol.metolD$conc
 species <- dehyd.amphib.metol.metolD$species
 plot(time, conc)
+boxplot(conc ~ time, main = "Metolachlor+D", xlab = "Dehydration Time (hrs)", 
+        ylab="Concentration", col="lightblue")
 #only one species
 metolD.lm <- lm(conc ~ time + species) # + species
 summary(metolD.lm)
@@ -246,6 +258,8 @@ time <- dehyd.amphib.tdn.tdn$time
 conc <- dehyd.amphib.tdn.tdn$conc
 species <- dehyd.amphib.tdn.tdn$species
 plot(time, conc)
+boxplot(conc ~ time, main = "Triadimefon", xlab = "Dehydration Time (hrs)", 
+        ylab="Concentration", col="lightblue")
 #only one species
 tdn.lm <- lm(conc ~ time + species)
 summary(tdn.lm)
@@ -260,6 +274,8 @@ time <- dehyd.amphib.tdn.tdnD$time
 conc <- dehyd.amphib.tdn.tdnD$conc
 species <- dehyd.amphib.tdn.tdnD$species
 plot(time, conc)
+boxplot(conc ~ time, main = "Triadimefon+D", xlab = "Dehydration Time (hrs)", 
+        ylab="Concentration", col="lightblue")
 #only one species
 tdnD.lm <- lm(conc ~ time + species)
 summary(tdnD.lm)
@@ -273,6 +289,8 @@ conc <- big_test$conc
 species <- big_test$species
 pesticides <- big_test$analyte
 plot(time, conc)
+boxplot(conc ~ time, main = "Useless", xlab = "Dehydration Time (hrs)", 
+        ylab="Concentration", col="lightblue")
 big_test.lm <- lm(conc ~ time + species + pesticides)
 summary(big_test.lm)
 ```
@@ -285,6 +303,8 @@ conc <- big_test$conc
 species <- big_test$species
 pesticides <- big_test$analyte
 plot(time, conc)
+boxplot(conc ~ time, main = "Useless+D", xlab = "Dehydration Time (hrs)", 
+        ylab="Concentration", col="lightblue")
 big_testD.lm <- lm(conc ~ time + species + pesticides)
 summary(big_testD.lm)
 ```
