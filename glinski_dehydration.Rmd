@@ -166,8 +166,8 @@ time <- dehyd.amphib.atrazine.atrazine$time
 conc <- dehyd.amphib.atrazine.atrazine$conc
 species <- dehyd.amphib.atrazine.atrazine$species
 #plot(time, conc)
-boxplot(conc ~ time, main = "Atrazine", xlab = "Dehydration Time (hrs)", 
-        ylab="Concentration", col="lightblue")
+boxplot(conc ~ species + time, main = "Atrazine", xlab = "Dehydration Time (hrs)", 
+        ylab="Concentration", col=c("lightblue", "red"))
 atrazine.lm <- lm(conc ~ time + species)
 summary(atrazine.lm)
 ```
@@ -180,7 +180,7 @@ time <- dehyd.amphib.atrazine.atrazineD$time
 conc <- dehyd.amphib.atrazine.atrazineD$conc
 species <- dehyd.amphib.atrazine.atrazineD$species
 plot(time, conc)
-boxplot(conc ~ time, main = "Atrazine+D", xlab = "Dehydration Time (hrs)", 
+boxplot(conc ~ species + time, main = "Atrazine+D", xlab = "Dehydration Time (hrs)", 
         ylab="Concentration", col="lightblue")
 atrazineD.lm <- lm(conc ~ time + species)
 summary(atrazineD.lm)
@@ -195,7 +195,7 @@ time <- dehyd.amphib.chloro.chloromet$time
 conc <- dehyd.amphib.chloro.chloromet$conc
 species <- dehyd.amphib.chloro.chloromet$species
 plot(time, conc)
-boxplot(conc ~ time, main = "Chlorothalonil Metabolite", xlab = "Dehydration Time (hrs)", 
+boxplot(conc ~ species + time, main = "Chlorothalonil Metabolite", xlab = "Dehydration Time (hrs)", 
         ylab="Concentration", col="lightblue")
 chloromet.lm <- lm(conc ~ time + species)
 summary(chloromet.lm)
@@ -210,7 +210,7 @@ time <- dehyd.amphib.imid.imid$time
 conc <- dehyd.amphib.imid.imid$conc
 species <- dehyd.amphib.imid.imid$species
 plot(time, conc)
-boxplot(conc ~ time, main = "Imidacloprid", xlab = "Dehydration Time (hrs)", 
+boxplot(conc ~ species + time, main = "Imidacloprid", xlab = "Dehydration Time (hrs)", 
         ylab="Concentration", col="lightblue")
 #only one species
 imid.lm <- lm(conc ~ time) # + species
@@ -226,7 +226,7 @@ time <- dehyd.amphib.metol.metol$time
 conc <- dehyd.amphib.metol.metol$conc
 species <- dehyd.amphib.metol.metol$species
 plot(time, conc)
-boxplot(conc ~ time, main = "Metolachlor", xlab = "Dehydration Time (hrs)", 
+boxplot(conc ~ species + time, main = "Metolachlor", xlab = "Dehydration Time (hrs)", 
         ylab="Concentration", col="lightblue")
 #only one species
 metol.lm <- lm(conc ~ time + species) # + species
@@ -242,7 +242,7 @@ time <- dehyd.amphib.metol.metolD$time
 conc <- dehyd.amphib.metol.metolD$conc
 species <- dehyd.amphib.metol.metolD$species
 plot(time, conc)
-boxplot(conc ~ time, main = "Metolachlor+D", xlab = "Dehydration Time (hrs)", 
+boxplot(conc ~ species + time, main = "Metolachlor+D", xlab = "Dehydration Time (hrs)", 
         ylab="Concentration", col="lightblue")
 #only one species
 metolD.lm <- lm(conc ~ time + species) # + species
@@ -258,7 +258,7 @@ time <- dehyd.amphib.tdn.tdn$time
 conc <- dehyd.amphib.tdn.tdn$conc
 species <- dehyd.amphib.tdn.tdn$species
 plot(time, conc)
-boxplot(conc ~ time, main = "Triadimefon", xlab = "Dehydration Time (hrs)", 
+boxplot(conc ~ species + time, main = "Triadimefon", xlab = "Dehydration Time (hrs)", 
         ylab="Concentration", col="lightblue")
 #only one species
 tdn.lm <- lm(conc ~ time + species)
@@ -274,7 +274,7 @@ time <- dehyd.amphib.tdn.tdnD$time
 conc <- dehyd.amphib.tdn.tdnD$conc
 species <- dehyd.amphib.tdn.tdnD$species
 plot(time, conc)
-boxplot(conc ~ time, main = "Triadimefon+D", xlab = "Dehydration Time (hrs)", 
+boxplot(conc ~ species + time, main = "Triadimefon+D", xlab = "Dehydration Time (hrs)", 
         ylab="Concentration", col="lightblue")
 #only one species
 tdnD.lm <- lm(conc ~ time + species)
@@ -289,7 +289,7 @@ conc <- big_test$conc
 species <- big_test$species
 pesticides <- big_test$analyte
 plot(time, conc)
-boxplot(conc ~ time, main = "Useless", xlab = "Dehydration Time (hrs)", 
+boxplot(conc ~ species + time, main = "Useless", xlab = "Dehydration Time (hrs)", 
         ylab="Concentration", col="lightblue")
 big_test.lm <- lm(conc ~ time + species + pesticides)
 summary(big_test.lm)
@@ -303,7 +303,7 @@ conc <- big_test$conc
 species <- big_test$species
 pesticides <- big_test$analyte
 plot(time, conc)
-boxplot(conc ~ time, main = "Useless+D", xlab = "Dehydration Time (hrs)", 
+boxplot(conc ~ species + time, main = "Useless+D", xlab = "Dehydration Time (hrs)", 
         ylab="Concentration", col="lightblue")
 big_testD.lm <- lm(conc ~ time + species + pesticides)
 summary(big_testD.lm)
