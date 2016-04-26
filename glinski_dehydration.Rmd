@@ -69,7 +69,7 @@ unique(dehyd$species)
 dehyd.amphib <- dehyd[which(dehyd$matrix=="amphib"),]
 dehyd.soil <- dehyd[which(dehyd$matrix=="soil"),]
 
-#atrazine
+##################atrazine
 dehyd.amphib.atrazine <- dehyd.amphib[which(dehyd.amphib$parent=="atrazine"),]
 #View(dehyd.amphib.atrazine)
 dehyd.amphib.atrazine.atrazine <-   dehyd.amphib.atrazine[which(dehyd.amphib.atrazine$analyte=="atrazine"),]
@@ -91,11 +91,16 @@ dehyd.amphib.atrazine.atrazineD$analyte <- "atrazineD"
 dehyd.amphib.atrazine.atrazineD$conc <- dehyd.amphib.atrazine.atrazineD$conc2
 dehyd.amphib.atrazine.atrazineD <- subset(dehyd.amphib.atrazine.atrazineD, select=-c(conc2))
 #View(dehyd.amphib.atrazine.atrazineD)
+unique(dehyd.amphib.atrazine.atrazineD$species)
+dehyd.amphib.atrazine.atrazineD.BA <- dehyd.amphib.atrazine.atrazineD[which(dehyd.amphib.atrazine.atrazineD$species=="BA"),]
+dehyd.amphib.atrazine.atrazineD.LF <- dehyd.amphib.atrazine.atrazineD[which(dehyd.amphib.atrazine.atrazineD$species=="LF"),]
 
-#chlorothalonil
+#######################chlorothalonil
 dehyd.amphib.chloro <- dehyd.amphib[which(dehyd.amphib$parent=="chloro"),]
 dehyd.amphib.chloro.chloro <- dehyd.amphib.chloro[which(dehyd.amphib.chloro$analyte=="chloro"),]
 dehyd.amphib.chloro.chloromet <- dehyd.amphib.chloro[which(dehyd.amphib.chloro$analyte=="chloromet"),]
+dehyd.amphib.chloro.chloromet.BA <- dehyd.amphib.chloro.chloromet[which(dehyd.amphib.chloro.chloromet$species=="BA"),]
+dehyd.amphib.chloro.chloromet.LF <- dehyd.amphib.chloro.chloromet[which(dehyd.amphib.chloro.chloromet$species=="LF"),]
 ##chlorothalonil data NA
 ##create chloro plus metabolites dataframe
 #dehyd.amphib.chloro.chloroD <- dehyd.amphib.chloro.chloro
@@ -112,11 +117,13 @@ dehyd.amphib.chloro.chloromet <- dehyd.amphib.chloro[which(dehyd.amphib.chloro$a
 #dehyd.amphib.chloro.chloroD <- subset(dehyd.amphib.chloro.chloroD, select=-c(conc2))
 ##View(dehyd.amphib.chloro.chloroD)
 
-#imidacloprid
+###################imidacloprid
 dehyd.amphib.imid <- dehyd.amphib[which(dehyd.amphib$parent=="imid"),]
 dehyd.amphib.imid.imid <- dehyd.amphib.imid[which(dehyd.amphib.imid$analyte=="imid"),]
+dehyd.amphib.imid.imid.BA <- dehyd.amphib.imid.imid[which(dehyd.amphib.imid.imid$species=="BA"),]
+dehyd.amphib.imid.imid.LF <- dehyd.amphib.imid.imid[which(dehyd.amphib.imid.imid$species=="LF"),]
 
-#metolachlor
+#####################metolachlor
 dehyd.amphib.metol <- dehyd.amphib[which(dehyd.amphib$parent=="metol"),]
 dehyd.amphib.metol.metol <- dehyd.amphib.metol[which(dehyd.amphib.metol$analyte=="metol"),]
 dehyd.amphib.metol.mesa <- dehyd.amphib.metol[which(dehyd.amphib.metol$analyte=="mesa"),]
@@ -135,8 +142,10 @@ dehyd.amphib.metol.metolD$analyte <- "metolD"
 dehyd.amphib.metol.metolD$conc <- dehyd.amphib.metol.metolD$conc2
 dehyd.amphib.metol.metolD <- subset(dehyd.amphib.metol.metolD, select=-c(conc2))
 #View(dehyd.amphib.atrazine.atrazineD)
+dehyd.amphib.metol.metolD.BA <- dehyd.amphib.metol.metolD[which(dehyd.amphib.metol.metolD$species=="BA"),]
+dehyd.amphib.metol.metolD.LF <- dehyd.amphib.metol.metolD[which(dehyd.amphib.metol.metolD$species=="LF"),]
 
-#tridimefon
+####################################triadimefon
 dehyd.amphib.tdn <- dehyd.amphib[which(dehyd.amphib$parent=="tdn"),]
 dehyd.amphib.tdn.tdn <- dehyd.amphib.tdn[which(dehyd.amphib.tdn$analyte=="tdn"),]
 dehyd.amphib.tdn.tdla <- dehyd.amphib.tdn[which(dehyd.amphib.tdn$analyte=="tdla"),]
@@ -155,6 +164,9 @@ dehyd.amphib.tdn.tdnD$analyte <- "tdnD"
 dehyd.amphib.tdn.tdnD$conc <- dehyd.amphib.tdn.tdnD$conc2
 dehyd.amphib.tdn.tdnD <- subset(dehyd.amphib.tdn.tdnD, select=-c(conc2))
 #View(dehyd.amphib.tdn.tdnD)
+dehyd.amphib.tdn.tdnD.BA <- dehyd.amphib.tdn.tdnD[which(dehyd.amphib.tdn.tdnD$analyte=="BA"),]
+dehyd.amphib.tdn.tdnD.LF <- dehyd.amphib.tdn.tdnD[which(dehyd.amphib.tdn.tdnD$analyte=="LF"),]
+
 ```
 
 Significance testing.
