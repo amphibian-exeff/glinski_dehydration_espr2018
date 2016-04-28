@@ -20,6 +20,7 @@ R.Version()$version.string
 library(rmarkdown, quietly = TRUE, warn.conflicts = FALSE)
 library(dplyr, quietly = TRUE, warn.conflicts = FALSE)
 library(knitr, quietly = TRUE, warn.conflicts = FALSE)
+library(ggplot2)
 print("list of loaded packages: ")
 print((.packages()))
 ```
@@ -164,8 +165,8 @@ dehyd.amphib.tdn.tdnD$analyte <- "tdnD"
 dehyd.amphib.tdn.tdnD$conc <- dehyd.amphib.tdn.tdnD$conc2
 dehyd.amphib.tdn.tdnD <- subset(dehyd.amphib.tdn.tdnD, select=-c(conc2))
 #View(dehyd.amphib.tdn.tdnD)
-dehyd.amphib.tdn.tdnD.BA <- dehyd.amphib.tdn.tdnD[which(dehyd.amphib.tdn.tdnD$analyte=="BA"),]
-dehyd.amphib.tdn.tdnD.LF <- dehyd.amphib.tdn.tdnD[which(dehyd.amphib.tdn.tdnD$analyte=="LF"),]
+dehyd.amphib.tdn.tdnD.BA <- dehyd.amphib.tdn.tdnD[which(dehyd.amphib.tdn.tdnD$species=="BA"),]
+dehyd.amphib.tdn.tdnD.LF <- dehyd.amphib.tdn.tdnD[which(dehyd.amphib.tdn.tdnD$species=="LF"),]
 
 ```
 
@@ -198,6 +199,12 @@ atrazineD.lm <- lm(conc ~ time + species)
 summary(atrazineD.lm)
 ```
 
+species-specific plots for atrazine+D
+```{r atrazineD_species, eval=TRUE, echo=TRUE}
+str(dehyd.amphib.atrazine.atrazineD.BA)
+ggplot(dehyd.amphib.atrazine.atrazineD.BA, aes(x=time, y=conc,fill=time)+geom_boxplot())
+
+```
 chlorothalonil. no concs in data set, use chloromet isntead
 ```{r chlorothalonil_plot, eval=TRUE, echo=TRUE}
 print("chlorothalonil-met")
