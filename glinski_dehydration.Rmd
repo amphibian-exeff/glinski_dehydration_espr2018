@@ -182,6 +182,10 @@ species <- dehyd.amphib.atrazine.atrazine$species
 boxplot(conc ~ species + time, main = "Atrazine", xlab = "Dehydration Time (hrs)", 
         ylab="Concentration", col=c("lightblue", "red"))
 atrazine.lm <- lm(conc ~ time + species)
+jpeg(paste(dehyd.graphics,"boxplot_atz.jpg", sep=""),width = 6, height = 4, units = "in",res=300)
+  boxplot(conc ~ species + time, main = "Atrazine", xlab = "Dehydration Time (hrs)", 
+        ylab="Concentration", col=c("lightblue", "red"))
+dev.off()
 summary(atrazine.lm)
 ```
 
@@ -194,15 +198,22 @@ conc <- dehyd.amphib.atrazine.atrazineD$conc
 species <- dehyd.amphib.atrazine.atrazineD$species
 plot(time, conc)
 boxplot(conc ~ species + time, main = "Atrazine+D", xlab = "Dehydration Time (hrs)", 
-        ylab="Concentration", col="lightblue")
+        ylab="Concentration", col=c("lightblue", "red"))
 atrazineD.lm <- lm(conc ~ time + species)
+jpeg(paste(dehyd.graphics,"boxplot_atzD.jpg", sep=""),width = 6, height = 4, units = "in",res=300)
+  boxplot(conc ~ species + time, main = "Atrazine+D", xlab = "Dehydration Time (hrs)", 
+        ylab="Concentration", col=c("lightblue", "red"))
+dev.off()
 summary(atrazineD.lm)
 ```
 
 species-specific plots for atrazine+D
 ```{r atrazineD_species, eval=TRUE, echo=TRUE}
+### working right here on ggplot jpegs
 str(dehyd.amphib.atrazine.atrazineD.BA)
-ggplot(dehyd.amphib.atrazine.atrazineD.BA, aes(x=time, y=conc,fill=time)+geom_boxplot())
+p <- ggplot(dehyd.amphib.atrazine.atrazineD.BA, aes(x=time, y=conc))
+p
+p+geom_boxplot(fill=time)
 
 ```
 chlorothalonil. no concs in data set, use chloromet isntead
