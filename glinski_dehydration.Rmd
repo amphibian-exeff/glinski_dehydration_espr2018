@@ -17,6 +17,16 @@ Install and load supporting libraries.
 print(Sys.info()[4])
 
 R.Version()$version.string
+
+#flush
+all.objects <- objects()
+rm(list=all.objects)
+rm(all.objects)
+
+#base list of packages
+print("base packages: ")
+print((.packages()))
+
 library(rmarkdown, quietly = TRUE, warn.conflicts = FALSE)
 library(dplyr, quietly = TRUE, warn.conflicts = FALSE)
 library(knitr, quietly = TRUE, warn.conflicts = FALSE)
