@@ -6,7 +6,7 @@ jpeg(paste(dehyd.graphics,"glinski_fig1.jpg", sep=""),width = 5, height = 8, uni
     time <- dehyd.amphib.atrazine.atrazineD$time
     conc <- dehyd.amphib.atrazine.atrazineD$conc
     species <- dehyd.amphib.atrazine.atrazineD$species
-    boxplot(conc ~ species + time, main = "Atrazine+D", xaxt='n', 
+    boxplot(conc ~ species + time, main = "Atrazine", xaxt='n', 
                     ylab="ug/g", col=c("lightblue", "red"))
   
   #imidacloprid
@@ -30,17 +30,17 @@ jpeg(paste(dehyd.graphics,"glinski_fig1.jpg", sep=""),width = 5, height = 8, uni
   time <- dehyd.amphib.metol.metolD$time
   conc <- dehyd.amphib.metol.metolD$conc
   species <- dehyd.amphib.metol.metolD$species
-  boxplot(conc ~ species + time, main = "Metolachlor+D", xaxt='n', 
+  boxplot(conc ~ species + time, main = "Metolachlor", xaxt='n', 
                    ylab="ug/g", col=c("lightblue", "red"))
   
   #triadimefon
   time <- dehyd.amphib.tdn.tdnD$time
   conc <- dehyd.amphib.tdn.tdnD$conc
   species <- dehyd.amphib.tdn.tdnD$species
-  boxplot(conc ~ species + time, main = "Triadimefon+D", xlab = "Dehydration Time (hrs)", 
+  boxplot(conc ~ species + time, main = "Triadimefon", xlab = "Dehydration Time (hrs)", 
           ylab="ug/g", col=c("lightblue", "red"))
   legend("topright", inset=.05, title="Species",
-         c("B. fowleri","L. pipiens"),fill=c("lightblue", "red"), horiz=FALSE)
+         c("B. fowleri","L.  sphenocephalus"),fill=c("lightblue", "red"), horiz=FALSE)
   #outer y axis
   mtext(text="ug/g",side=2,line=2,outer=TRUE,cex=1.05)
 
