@@ -4,6 +4,7 @@ time <- big_test$time
 conc <- big_test$conc
 species <- big_test$species
 pesticides <- big_test$analyte
+#need to calculate rehydration rates
 weight <- big_test$weight
 
 ggplot_data <- data.frame(cbind(time,species,pesticides))
