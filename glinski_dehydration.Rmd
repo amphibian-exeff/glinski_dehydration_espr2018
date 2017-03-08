@@ -62,7 +62,7 @@ dehyd.tables <- paste(dehyd.root, "tables/", sep="")
 print(paste("check to see if R can access files OK: ", file.exists(dehyd.csv.in), sep = ""))
 
 #original excel file has some amphibi as matrix instead aof amphib
-dehyd <- read.table(paste(dehyd.csv.in,"dehydration2.csv",sep=""), header = TRUE, sep = ",")
+dehyd <- read.table(paste(dehyd.csv.in,"dehydration3.csv",sep=""), header = TRUE, sep = ",")
 ```
 
 dehydration exposure data structure
@@ -188,6 +188,7 @@ str(dehyd.amphib.atrazine.atrazine)
 time <- dehyd.amphib.atrazine.atrazine$time
 conc <- dehyd.amphib.atrazine.atrazine$conc
 species <- dehyd.amphib.atrazine.atrazine$species
+weight <- dehyd.amphib.atrazine.atrazine$weight
 #plot(time, conc)
 boxplot(conc ~ species + time, main = "Atrazine", xlab = "Dehydration Time (hrs)", 
         ylab="Concentration", col=c("lightblue", "red"))
@@ -329,23 +330,37 @@ time <- big_test$time
 conc <- big_test$conc
 species <- big_test$species
 pesticides <- big_test$analyte
+weight <- big_test$weight
 plot(time, conc)
 boxplot(conc ~ species + time, main = "Useless", xlab = "Dehydration Time (hrs)", 
         ylab="Concentration", col="lightblue")
 big_test.lm <- lm(conc ~ time + species + pesticides)
 summary(big_test.lm)
+big_test2.lm <- lm(conc ~ time + species + pesticides + weight)
+summary(big_test2.lm)
 ```
 
 test everything together, chloromet instead of chlorothalonil, this time summing metabolites
+this is the one that we use
 ```{r big_testD, eval=TRUE, echo=TRUE}
 big_test <- rbind(dehyd.amphib.atrazine.atrazineD, dehyd.amphib.imid.imid, dehyd.amphib.metol.metolD, dehyd.amphib.tdn.tdnD, dehyd.amphib.chloro.chloromet)
 time <- big_test$time
 conc <- big_test$conc
 species <- big_test$species
 pesticides <- big_test$analyte
+weight <- big_test$weight
 plot(time, conc)
 boxplot(conc ~ species + time, main = "Useless+D", xlab = "Dehydration Time (hrs)", 
         ylab="Concentration", col="lightblue")
+#we use this one because weight sucks as a covariate
 big_testD.lm <- lm(conc ~ time + species + pesticides)
 summary(big_testD.lm)
+ggplot_data <- as.data.frame(cbind(conc,time,species))
+ggplot(ggplot_data, aes(time,conc))
+
+#we are not using weight
+big_testD2.lm <- lm(conc ~ time + species + pesticides + weight)
+summary(big_testD2.lm)
+
+
 ```
