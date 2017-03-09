@@ -63,6 +63,7 @@ print(paste("check to see if R can access files OK: ", file.exists(dehyd.csv.in)
 
 #original excel file has some amphibi as matrix instead aof amphib
 dehyd <- read.table(paste(dehyd.csv.in,"dehydration3.csv",sep=""), header = TRUE, sep = ",")
+rehydrate <- read.table(paste(dehyd.csv.in,"rehydration_rates2.csv",sep=""), header = TRUE, sep = ",")
 ```
 
 dehydration exposure data structure

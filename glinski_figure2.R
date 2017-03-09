@@ -1,24 +1,38 @@
 library(dplyr)
-big_test <- rbind(dehyd.amphib.atrazine.atrazineD, dehyd.amphib.imid.imid, dehyd.amphib.metol.metolD, dehyd.amphib.tdn.tdnD, dehyd.amphib.chloro.chloromet)
-time <- big_test$time
-conc <- big_test$conc
-species <- big_test$species
-pesticides <- big_test$analyte
-#need to calculate rehydration rates
-weight <- big_test$weight
+library(ggplot2)
 
-ggplot_data <- data.frame(cbind(time,species,pesticides))
-ggplot_data <- cbind(ggplot_data,weight)
+rehydrate
+summary(rehydrate)
+
+time <- rehydrate$time
+rates <- as.numeric(as.character(rehydrate$rate))
+species <- rehydrate$spp
+pesticides <- rehydrate$pesticide
+levels(pesticides)
+levels(species)
+
+ggplot_data <- data.frame(time,species,pesticides)
+ggplot_data <- cbind(ggplot_data,rates)
+summary(ggplot_data)
 #View(ggplot_data)
 
 ggplot_data$time <- factor(c(0,2,4,6,8,10))
-grouped_data <- group_by(ggplot_data,pesticides,species,time)
 
-ggplot_means <- summarise(grouped_data, mean=mean(weight))
-ggplot_means
 
-p <- ggplot(ggplot_data, aes(time,weight))
-p <- p + geom_point(aes(colour = factor(pesticides), shape=factor(species)), size = 4) 
+p <- ggplot(ggplot_data, aes(time,rates))
+#p <- p + scale_x_continuous(breaks=c(0,2,4,6,8,10))
+p <- p + geom_point(aes(color = factor(pesticides), shape=factor(species)))
+p <- p + theme_bw()
+p <- p + xlab("Dehydration Time (h)")
+p <- p + ylab("Rehydration Rate (g/h)")
+#http://docs.ggplot2.org/current/guides.html
+p <- p + guides(colour = guide_legend("Pesticide"), shape = guide_legend("Species"))
 p
+
+jpeg(paste(dehyd.graphics,"glinski_fig2.jpg", sep=""),width = 6, height = 4, units = "in",res=300)
+  p
+dev.off()
+#p <- p + geom_line(aes(color = factor(pesticides), size = 1))
+
 
 
