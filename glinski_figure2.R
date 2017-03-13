@@ -27,6 +27,8 @@ p <- p + xlab("Dehydration Time (h)")
 p <- p + ylab("Rehydration Rate (g/h)")
 #http://docs.ggplot2.org/current/guides.html
 p <- p + guides(colour = guide_legend("Pesticide"), shape = guide_legend("Species"))
+#expression(italic('A. fowleri'))
+#expression(italic('L. sphenocephala'))
 p
 
 jpeg(paste(dehyd.graphics,"glinski_fig2.jpg", sep=""),width = 6, height = 4, units = "in",res=300)

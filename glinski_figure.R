@@ -47,5 +47,5 @@ jpeg(paste(dehyd.graphics,"glinski_fig1.jpg", sep=""),width = 5, height = 8, uni
   mtext(text=expression(paste("Concentration ( ",mu,"g/g)",sep="")),side=2,line=2,outer=TRUE,cex=1.05)
 
   #outer x axis
-  mtext(text="Dehydration Time (Hours)",side=1,line=3,outer=TRUE,cex=1.05)
+  mtext(text="Dehydration Time (h)",side=1,line=3,outer=TRUE,cex=1.05)
 dev.off()
