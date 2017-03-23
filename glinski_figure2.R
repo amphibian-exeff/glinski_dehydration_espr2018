@@ -33,6 +33,7 @@ p <- p + scale_shape_manual('Species',
 p <- p + theme_bw()
 p <- p + xlab("Dehydration Time (h)")
 p <- p + ylab("Rehydration Rate (g/h)")
+p <- p + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())
 p
 
 jpeg(paste(dehyd.graphics,"glinski_fig2.jpg", sep=""),width = 6, height = 4, units = "in",res=300)
