@@ -20,21 +20,25 @@ ggplot_data$time <- factor(c(0,2,4,6,8,10))
 
 
 p <- ggplot(ggplot_data, aes(time,rates))
-#p <- p + scale_x_continuous(breaks=c(0,2,4,6,8,10))
-p <- p + geom_point(aes(color = factor(pesticides), shape=factor(species)))
+p <- p + geom_point(aes(color = pesticides, shape=species))
+p <- p + scale_color_manual('Pesticide',
+                            labels= c('Atrazine','Chlorothalonil','Imidacloprid','Metolachlor','Triadimefon'), 
+                            values = c("red2", "blue4", "forestgreen", "orange1", "magenta2"), 
+                            breaks= c('Atrazine','Chlorothalonil','Imidacloprid','Metolachlor','Triadimefon'))
+p <- p + scale_shape_manual('Species',
+                            labels= c(expression(italic('A. fowleri                ')),
+                                      expression(italic('L. sphenocephala'))),
+                            values= c(16,17),
+                            breaks= c('Fowlers toad','Leopard frog'))
 p <- p + theme_bw()
 p <- p + xlab("Dehydration Time (h)")
 p <- p + ylab("Rehydration Rate (g/h)")
-#http://docs.ggplot2.org/current/guides.html
-p <- p + guides(colour = guide_legend("Pesticide"), shape = guide_legend("Species"))
-p <- p + scale_fill_discrete(name='Species', labels=c(expression(italic('A. fowleri')),expression(italic('L. sphenocephala'))))
-# c(expression(italic('A. fowleri')),expression(italic('L. sphenocephala')))
 p
 
 jpeg(paste(dehyd.graphics,"glinski_fig2.jpg", sep=""),width = 6, height = 4, units = "in",res=300)
   p
 dev.off()
-#p <- p + geom_line(aes(color = factor(pesticides), size = 1))
+
 
 
 
