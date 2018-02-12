@@ -49,7 +49,7 @@ if(Sys.info()[4]=="stp-air-3.local" || Sys.info()[4]=="stp-air.local" || Sys.inf
 }
 
 if(Sys.info()[4]=="DZ2626UTPURUCKE"){
-  dehyd.root <- "k:/git/glinski_dehydration/"
+  dehyd.root <- "d:/git/glinski_dehydration/"
 }
 print(paste("Root directory location: ", dehyd.root, sep=""))
 

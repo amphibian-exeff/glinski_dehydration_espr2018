@@ -9,22 +9,19 @@ jpeg(paste(dehyd.graphics,"glinski_fig1.jpg", sep=""),width = 5, height = 8, uni
     boxplot(conc ~ species + time, at =c(1,2, 4,5, 7,8, 10,11, 13,14, 16,17), main = "Atrazine", xaxt='n', 
                     ylab="ug/g", col=c("lightblue", "red"))
   
-  #imidacloprid
-  time <- dehyd.amphib.imid.imid$time
-  conc <- dehyd.amphib.imid.imid$conc
-  species <- dehyd.amphib.imid.imid$species
-  boxplot(conc ~ species + time, at =c(1,2, 4,5, 7,8, 10,11, 13,14, 16,17), main = "Imidacloprid", xaxt='n', 
-                  ylab="ug/g", col=c("lightblue", "red"))
-  
-  
-  #chlorothalonil
-  time <- dehyd.amphib.chloro.chloromet$time
-  conc <- dehyd.amphib.chloro.chloromet$conc
-  species <- dehyd.amphib.chloro.chloromet$species
-  boxplot(conc ~ species + time, at =c(1,2, 4,5, 7,8, 10,11, 13,14, 16,17), main = "Chlorothalonil Metabolite", xaxt='n', 
-          ylab="ug/g", col=c("lightblue", "red"))
-  
-  
+    #chlorothalonil
+    time <- dehyd.amphib.chloro.chloromet$time
+    conc <- dehyd.amphib.chloro.chloromet$conc
+    species <- dehyd.amphib.chloro.chloromet$species
+    boxplot(conc ~ species + time, at =c(1,2, 4,5, 7,8, 10,11, 13,14, 16,17), main = "Chlorothalonil Metabolite", xaxt='n', 
+            ylab="ug/g", col=c("lightblue", "red"))
+    
+      #imidacloprid
+    time <- dehyd.amphib.imid.imid$time
+    conc <- dehyd.amphib.imid.imid$conc
+    species <- dehyd.amphib.imid.imid$species
+    boxplot(conc ~ species + time, at =c(1,2, 4,5, 7,8, 10,11, 13,14, 16,17), main = "Imidacloprid", xaxt='n', 
+                    ylab="ug/g", col=c("lightblue", "red"))
   
   #metolachlor
   time <- dehyd.amphib.metol.metolD$time
