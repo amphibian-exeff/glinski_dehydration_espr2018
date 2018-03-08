@@ -356,6 +356,9 @@ boxplot(conc ~ species + time, main = "Useless+D", xlab = "Dehydration Time (hrs
 #we use this one because weight sucks as a covariate
 big_testD.lm <- lm(conc ~ time + species + pesticides)
 summary(big_testD.lm)
+big_testD.aov <- aov(conc ~ time + species + pesticides)
+summary(big_testD.aov)
+TukeyHSD(big_testD.aov)
 ggplot_data <- as.data.frame(cbind(conc,time,species))
 ggplot(ggplot_data, aes(time,conc))
 
