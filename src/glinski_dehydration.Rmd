@@ -229,6 +229,8 @@ str(dehyd.amphib.atrazine.atrazineD.BA)
 #p+geom_boxplot(fill=time)
 
 ```
+
+
 chlorothalonil. no concs in data set, use chloromet isntead
 ```{r chlorothalonil_plot, eval=TRUE, echo=TRUE}
 print("chlorothalonil-met")

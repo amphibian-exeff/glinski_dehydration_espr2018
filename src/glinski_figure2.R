@@ -11,6 +11,7 @@ pesticides <- rehydrate$pesticide
 levels(pesticides)
 levels(species)
 
+
 ggplot_data <- data.frame(time,species,pesticides)
 ggplot_data <- cbind(ggplot_data,rates)
 summary(ggplot_data)
@@ -18,6 +19,14 @@ summary(ggplot_data)
 
 ggplot_data$time <- factor(c(0,2,4,6,8,10))
 
+# rehydration rate range
+min(ggplot_data$rates[which(ggplot_data$time!=0)], na.rm=T)
+max(ggplot_data$rates[which(ggplot_data$time!=0)], na.rm=T)
+mean(ggplot_data$rates[which(ggplot_data$time!=0)], na.rm=T)
+
+# rehydration lm but dropping the control at time 0
+rehydration.lm <- lm(ggplot_data$rates[which(ggplot_data$time!=0)] ~ ggplot_data$time[which(ggplot_data$time!=0)])
+summary(rehydration.lm)
 
 p <- ggplot(ggplot_data, aes(time,rates))
 p <- p + geom_point(aes(color = pesticides, shape=species))
